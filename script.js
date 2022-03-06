@@ -1,11 +1,15 @@
 
-var t1, t2, p1, p2, v1, v2;
+//set Variables für die Zustandsänderung
+var t1, t2, p1, p2, v1, v2; 
 var selects = {pos: null, to: null};
 var elements = document.getElementsByClassName('calculationContainer');
+
+//hide all calulation for Zustandsänderung
 for (var i = 0; i < elements.length; i++) {
     hideElement(elements.item(i));
 }
 
+//berechnet Wirkungsgrad
 const calculateW = () => {
     var ab = document.getElementById('Eab').value; 
     var zu = document.getElementById('Ezu').value;
@@ -35,6 +39,7 @@ function setState(checkboxId) {
     var V1_selector = document.getElementById("v1-selector");
     var V2_selector = document.getElementById("v2-selector");
 
+    //isobar
     if (checkboxId == "isobar") {
         isIsotherm.checked = false;
         isIsochor.checked = false;
@@ -47,6 +52,7 @@ function setState(checkboxId) {
         selects.pos = 'isobar';
     }
 
+    //isochor
     if (checkboxId == "isochor") {
         isIsotherm.checked = false;
         isIsobar.checked = false;
@@ -59,6 +65,7 @@ function setState(checkboxId) {
         selects.pos = 'isochor'
     }
 
+    //isotherm
     if (checkboxId == "isotherm") {
         isIsobar.checked = false;
         isIsochor.checked = false;
@@ -71,13 +78,14 @@ function setState(checkboxId) {
         selects.pos = 'isotherm';
     }
 
+    //all target selectors disabled
     selections = document.getElementsByClassName('searchSelection');
     for(var i = 0; i < selections.length; i++) {
         selections[i].checked = false;
     }
 }
 
-//set what you looking for
+//set the target value by name
 function setSearch(name) {
     selects.to = name;
     selections = document.getElementsByClassName('searchSelection');
