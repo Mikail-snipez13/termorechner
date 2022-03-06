@@ -15,10 +15,12 @@
         <ul class="navList">
             <li><a href="energy.htm">Energien</a></li>
             <li class="clickedItem"><a href="zustand.htm">Zustandsänderung</a></li>
-            <li><a href="circle.htm">Einheiten</a></li>
+            <li><a href="einheiten.htm">Einheiten</a></li>
         </ul>
     </nav>
     <section style="background-color: black;">
+
+        <!-- Selection -->
         <div id="contentTitleContainer"> 
             <h1 style="margin: 25px 0px 25px 0px;">Zustandsänderungen</h1>
         </div>
@@ -26,15 +28,15 @@
             <h2>Wählen Sie aus was Sie berechnen wollen!</h2>
             <div class="checkboxContainer" name="setup">
                 <div>
-                    <input type="checkbox" id="isIsochor" onchange="setState('isochor')">
+                    <input class="checkbox" type="checkbox" id="isIsochor" onchange="setState('isochor')">
                     <h4>isochor</h4>
                 </div>
                 <div>
-                    <input type="checkbox" id="isIsobar" onchange="setState('isobar')">
+                    <input class="checkbox" type="checkbox" id="isIsobar" onchange="setState('isobar')">
                     <h4>isobar</h4>
                 </div>
                 <div>
-                    <input type="checkbox" id="isIsotherm" onchange="setState('isotherm')">
+                    <input class="checkbox" type="checkbox" id="isIsotherm" onchange="setState('isotherm')">
                     <h4>isotherm</h4>
                 </div>
                 <div>

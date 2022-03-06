@@ -87,7 +87,7 @@ function setSearch(name) {
     document.getElementById(selects.to + '-selector').checked = true;
 }
 
-//filtered the needed calculation
+//filter the needed calculation
 function showCalculation() {
     for(var i = 0; i < elements.length; i++) {
         hideElement(elements.item(i));
