@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>ThermoRechner🔥🍕</title>
+</head>
+<body>
+    <nav>
+        <div id="titleContainer">
+             <h1>THERMO RECHNER</h1>
+        </div>
+        <ul class="navList">
+            <li><a href="energy.htm">Energien</a></li>
+            <li class="clickedItem"><a href="zustand.htm">Zustandsänderung</a></li>
+            <li><a href="einheiten.htm">Einheiten</a></li>
+        </ul>
+    </nav>
+    <section style="background-color: black;">
+
+        <!-- Selection -->
+        <div id="contentTitleContainer"> 
+            <h1 style="margin: 25px 0px 25px 0px;">Zustandsänderungen</h1>
+        </div>
+        <div class="selectionContainer"> 
+            <h2>Wählen Sie aus was Sie berechnen wollen!</h2>
+            <div class="checkboxContainer" name="setup">
+                <div>
+                    <input type="checkbox" id="isIsochor" onchange="setState('isochor')">
+                    <h4>isochor</h4>
+                </div>
+                <div>
+                    <input type="checkbox" id="isIsobar" onchange="setState('isobar')">
+                    <h4>isobar</h4>
+                </div>
+                <div>
+                    <input type="checkbox" id="isIsotherm" onchange="setState('isotherm')">
+                    <h4>isotherm</h4>
+                </div>
+                <div>
+                    <div id="split"></div>
+                </div>
+                <div>
+                    <input class="searchSelection" type="checkbox" id="t1-selector" disabled onchange="
+                        setSearch('t1');
+                        showCalculation();
+                    ">
+                    <h4>T<sub>1</sub></h4>
+                </div>
+                <div>
+                    <input class="searchSelection" type="checkbox" id="t2-selector" disabled onchange="
+                        setSearch('t2');
+                        showCalculation();
+                    ">
+                    <h4>T<sub>2</sub></h4>
+                </div>
+                <div>
+                    <input class="searchSelection" type="checkbox" id="p1-selector" disabled onchange="
+                        setSearch('p1');
+                        showCalculation();
+                    ">
+                    <h4>P<sub>1</sub></h4>
+                </div>
+                <div>
+                    <input class="searchSelection" type="checkbox" id="p2-selector" disabled onchange="
+                        setSearch('p2');
+                        showCalculation();
+                    ">
+                    <h4>P<sub>2</sub></h4>
+                </div>
+                <div>
+                    <input class="searchSelection" type="checkbox" id="v1-selector" disabled onchange="
+                        setSearch('v1');
+                        showCalculation();
+                    ">
+                    <h4>V<sub>1</sub></h4>
+                </div>
+                <div>
+                    <input class="searchSelection" type="checkbox" id="v2-selector" disabled onchange="
+                        setSearch('v2');
+                        showCalculation();
+                    ">
+                    <h4>V<sub>2</sub></h4>
+                </div>
+            </div>
+        </div>
+
+        <!--
+            Isochore Zustandänderung
+            Berechnung von T1 bei isochorer Za
+        -->
+        <div class="calculationContainer" id="isochor-t1">
+            <h2>Berechnung von T<sub>1</sub> bei isochorer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>P<sub>1</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isochor-t1-p1" onchange="setThermoValue('p1', 'isochor-t1-p1'); calculation('isochor-t1');">
+                </div>
+                <div>
+                    <h4>P<sub>2</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isochor-t1-p2" onchange="setThermoValue('p2', 'isochor-t1-p2'); calculation('isochor-t1');">
+                </div>
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isochor-t1-t2" onchange="setThermoValue('t2', 'isochor-t1-t2'); calculation('isochor-t1');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isochor-t1">T<sub>1</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von T2 bei isochorer Za-->
+        <div class="calculationContainer" id="isochor-t2">
+            <h2>Berechnung von T<sub>2</sub> bei isochorer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>P<sub>1</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isochor-t2-p1" onchange="setThermoValue('p1', 'isochor-t2-p1'); calculation('isochor-t2');">
+                </div>
+                <div>
+                    <h4>P<sub>2</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isochor-t2-p2" onchange="setThermoValue('p2', 'isochor-t2-p2'); calculation('isochor-t2');">
+                </div>
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isochor-t2-t1" onchange="setThermoValue('t1', 'isochor-t2-t1'); calculation('isochor-t2');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isochor-t2">T<sub>2</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von P1 bei isochorer Za-->
+        <div class="calculationContainer" id="isochor-p1">
+            <h2>Berechnung von P<sub>1</sub> bei isochorer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isochor-p1-t1" onchange="setThermoValue('t1', 'isochor-p1-t1'); calculation('isochor-p1');">
+                </div>
+                <div>
+                    <h4>P<sub>2</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isochor-p1-p2" onchange="setThermoValue('p2', 'isochor-p1-p2'); calculation('isochor-p1');">
+                </div>
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isochor-p1-t2" onchange="setThermoValue('t2', 'isochor-p1-t2'); calculation('isochor-p1');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isochor-p1">P<sub>1</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von P2 bei isochorer Za-->
+        <div class="calculationContainer" id="isochor-p2">
+            <h2>Berechnung von P<sub>2</sub> bei isochorer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isochor-p2-t1" onchange="setThermoValue('t1', 'isochor-p2-t1'); calculation('isochor-p2');">
+                </div>
+                <div>
+                    <h4>P<sub>1</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isochor-p2-p1" onchange="setThermoValue('p1', 'isochor-p2-p1'); calculation('isochor-p2');">
+                </div>
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isochor-p2-t2" onchange="setThermoValue('t2', 'isochor-p2-t2'); calculation('isochor-p2');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isochor-p2">P<sub>2</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--
+            Isobare Zustandänderung
+            Berechnung von T1 bei isobarer Zustandsänderung
+        -->
+        <div class="calculationContainer" id="isobar-t1">
+            <h2>Berechnung von T<sub>1</sub> bei isobarer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isobar-t1-t2" onchange="setThermoValue('t2', 'isobar-t1-t2'); calculation('isobar-t1');">
+                </div>
+                <div>
+                    <h4>V<sub>1</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isobar-t1-v1" onchange="setThermoValue('v1', 'isobar-t1-v1'); calculation('isobar-t1');">
+                </div>
+                <div>
+                    <h4>V<sub>2</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isobar-t1-v2" onchange="setThermoValue('v2', 'isobar-t1-v2'); calculation('isobar-t1');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isobar-t1">T<sub>1</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von T2 bei isobarer Zustandsänderung-->
+        <div class="calculationContainer" id="isobar-t2">
+            <h2>Berechnung von T<sub>2</sub> bei isobarer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isobar-t2-t1" onchange="setThermoValue('t1', 'isobar-t2-t1'); calculation('isobar-t2');">
+                </div>
+                <div>
+                    <h4>V<sub>1</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isobar-t2-v1" onchange="setThermoValue('v1', 'isobar-t2-v1'); calculation('isobar-t2');">
+                </div>
+                <div>
+                    <h4>V<sub>2</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isobar-t2-v2" onchange="setThermoValue('v2', 'isobar-t2-v2'); calculation('isobar-t2');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isobar-t2">T<sub>2</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von V1 bei isobarer Zustandsänderung-->
+        <div class="calculationContainer" id="isobar-v1">
+            <h2>Berechnung von V<sub>1</sub> bei isobarer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isobar-v1-t1" onchange="setThermoValue('t1', 'isobar-v1-t1'); calculation('isobar-v1');">
+                </div>
+                <div>
+                    <h4>V<sub>2</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isobar-v1-v2" onchange="setThermoValue('v2', 'isobar-v1-v2'); calculation('isobar-v1');">
+                </div>
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isobar-v1-t2" onchange="setThermoValue('t2', 'isobar-v1-t2'); calculation('isobar-v1');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isobar-v1">V<sub>1</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von V1 bei isobarer Zustandsänderung-->
+        <div class="calculationContainer" id="isobar-v2">
+            <h2>Berechnung von V<sub>2</sub> bei isobarer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isobar-v2-t1" onchange="setThermoValue('t1', 'isobar-v2-t1'); calculation('isobar-v2');">
+                </div>
+                <div>
+                    <h4>V<sub>1</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isobar-v2-v1" onchange="setThermoValue('v1', 'isobar-v2-v1'); calculation('isobar-v2');">
+                </div>
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input class="userInput" type="number" id="isobar-v2-t2" onchange="setThermoValue('t2', 'isobar-v2-t2'); calculation('isobar-v2');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isobar-v2">V<sub>2</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von P1 bei isothermer Zustandsänderung-->
+        <div class="calculationContainer" id="isotherm-p1">
+            <h2>Berechnung von P<sub>1</sub> bei isothermer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>P<sub>2</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isotherm-p1-p2" onchange="setThermoValue('p2', 'isotherm-p1-p2'); calculation('isotherm-p1');">
+                </div>
+                <div>
+                    <h4>V<sub>1</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isotherm-p1-v1" onchange="setThermoValue('v1', 'isotherm-p1-v1'); calculation('isotherm-p1');">
+                </div>
+                <div>
+                    <h4>V<sub>2</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isotherm-p1-v2" onchange="setThermoValue('v2', 'isotherm-p1-v2'); calculation('isotherm-p1');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isotherm-p1">P<sub>1</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von P1 bei isothermer Zustandsänderung-->
+        <div class="calculationContainer" id="isotherm-p2">
+            <h2>Berechnung von P<sub>2</sub> bei isothermer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>P<sub>1</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isotherm-p2-p1" onchange="setThermoValue('p1', 'isotherm-p2-p1'); calculation('isotherm-p2');">
+                </div>
+                <div>
+                    <h4>V<sub>1</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isotherm-p2-v1" onchange="setThermoValue('v1', 'isotherm-p2-v1'); calculation('isotherm-p2');">
+                </div>
+                <div>
+                    <h4>V<sub>2</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isotherm-p2-v2" onchange="setThermoValue('v2', 'isotherm-p2-v2'); calculation('isotherm-p2');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isotherm-p2">P<sub>2</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von P1 bei isothermer Zustandsänderung-->
+        <div class="calculationContainer" id="isotherm-v1">
+            <h2>Berechnung von V<sub>1</sub> bei isothermer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>P<sub>1</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isotherm-v1-p1" onchange="setThermoValue('p1', 'isotherm-v1-p1'); calculation('isotherm-v1');">
+                </div>
+                <div>
+                    <h4>P<sub>2</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isotherm-v1-p2" onchange="setThermoValue('p2', 'isotherm-v1-p2'); calculation('isotherm-v1');">
+                </div>
+                <div>
+                    <h4>V<sub>2</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isotherm-v1-v2" onchange="setThermoValue('v2', 'isotherm-v1-v2'); calculation('isotherm-v1');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isotherm-v1">V<sub>1</sub></h2>
+                </div>
+            </div>
+        </div>
+
+        <!--Berechnung von P1 bei isothermer Zustandsänderung-->
+        <div class="calculationContainer" id="isotherm-v2">
+            <h2>Berechnung von V<sub>2</sub> bei isothermer Zustandsänderung</h2>
+            <div class="calculation">
+                <div>
+                    <h4>P<sub>1</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isotherm-v2-p1" onchange="setThermoValue('p1', 'isotherm-v2-p1'); calculation('isotherm-v2');">
+                </div>
+                <div>
+                    <h4>P<sub>2</sub> in Pascal</h4>
+                    <input class="userInput" type="number" id="isotherm-v2-p2" onchange="setThermoValue('p2', 'isotherm-v2-p2'); calculation('isotherm-v2');">
+                </div>
+                <div>
+                    <h4>V<sub>1</sub> in m<sup>3</sup></h4>
+                    <input class="userInput" type="number" id="isotherm-v2-v1" onchange="setThermoValue('v1', 'isotherm-v2-v1'); calculation('isotherm-v2');">
+                </div>
+                <div>
+                    <h3>==></h3>
+                </div>
+                <div>
+                    <h2 id="res-isotherm-v2">V<sub>2</sub></h2>
+                </div>
+            </div>
+        </div>
+        <canvas id="graph" style=" width: 100%;"></canvas>
+    </section>
+    
+</body>
+
+<script src="script.js" alt="error"></script>
+</html>
