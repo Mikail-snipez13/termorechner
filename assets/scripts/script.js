@@ -9,23 +9,6 @@ for (var i = 0; i < elements.length; i++) {
     hideElement(elements.item(i));
 }
 
-//berechnet Wirkungsgrad
-const calculateW = () => {
-    var ab = document.getElementById('Eab').value; 
-    var zu = document.getElementById('Ezu').value;
-
-    //calculate the result
-    if (ab != null && zu != null) {
-        result = ab/zu;
-        document.getElementById('wirkungsgrad').innerHTML = format(result);
-    }
-
-    //easter egg
-    if (ab == 100 && zu == 100) {
-        document.getElementById('wirkungsgrad').innerHTML = "🍕";
-    }
-}
-
 //checkbox Zustandsänderung
 function setState(checkboxId) {
 

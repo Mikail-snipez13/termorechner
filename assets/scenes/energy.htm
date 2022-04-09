@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="../styles/style.css" type="text/css">
     <title>ThermoRechner🔥🍕</title>
 </head>
 <body>
@@ -18,10 +18,13 @@
             <li><a href="einheiten.htm">Einheiten</a></li>
         </ul>
     </nav>
+
     <section style="background-color: black;">
         <div id="contentTitleContainer"> 
             <h1 style="margin: 25px 0px 25px 0px;">Energien</h1>
         </div>
+
+        <!-- Wirkungsgrad  -->
         <div class="calContainer"> 
             <h2 style="margin: 0px;">Mechanischer Wirkungsgrad</h2>
             <div class="calculation">
@@ -47,10 +50,279 @@
                 </div>
             </div>
             <p style="margin: 0px">analog für P und W</p>
+            <div class="error-text" id="error-0">
+                <img src="../pictures/error.svg" height="40">
+                <p>E<sub>ab</sub> darf nicht größer sein als E<sub>zu</sub></p>
+            </div>
+        </div>
+
+        <!-- Wärmeenergie bei isochorem Prozess -->
+        <div class="calContainer">
+            <div style="display: flex; flex-direction: row; align-items: center;" >
+                <h2 style="margin: 0px;">Wärmeenergie</h2>
+                <h2 style="margin: 0px; width: 20px"></h2>
+                <h3 style="margin: 0px;">bei isochorem Prozess</h3>
+            </div>
+            
+            <div class="calculation">
+                <div style="text-align: center;">
+                    <h4 style="margin-bottom: 5px;">m in kg</h4>
+                    <input type="number" name="m" id="temp-energie-1-m" class="userInput" onchange="getTempEnergie1()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>c<sub>v</sub> in 
+                        <math>
+                            <mrow>
+                                <mfrac><mi>J</mi><mi>kg*K</mi></mfrac>
+                            </mrow>
+                        </math>
+                    </h4>
+                    <input type="text" list="Elements" class="userInput" id="temp-energie-1-cv" onchange="getTempEnergie1()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input type="number" class="userInput" name="t2" id="temp-energie-1-t2" onchange="getTempEnergie1()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input type="number" class="userInput" name="t1" id="temp-energie-1-t1" onchange="getTempEnergie1()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;</p></div>
+                <div><p>&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h2 id="temp-energie-1-q">Q<sub>12</sub></h2>
+                </div>
+            </div>
+            <div class="error-text" id="error-1">
+                <img src="../pictures/error.svg" height="40">
+                <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
+            </div>
+        </div>
+
+        <!-- Wärmeenergie bei isobarem Prozess -->
+        <div class="calContainer">
+            <div style="display: flex; flex-direction: row; align-items: center;" >
+                <h2 style="margin: 0px;">Wärmeenergie</h2>
+                <h2 style="margin: 0px; width: 20px"></h2>
+                <h3 style="margin: 0px;">bei isobarem Prozess</h3>
+            </div>
+            
+            <div class="calculation">
+                <div style="text-align: center;">
+                    <h4 style="margin-bottom: 5px;">m in kg</h4>
+                    <input type="number" name="m" id="temp-energie-2-m" class="userInput" onchange="getTempEnergie2()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>c<sub>p</sub> in 
+                        <math>
+                            <mrow>
+                                <mfrac><mi>J</mi><mi>kg*K</mi></mfrac>
+                            </mrow>
+                        </math>
+                    </h4>
+                    <input type="text" list="Elements" class="userInput" id="temp-energie-2-cp" onchange="getTempEnergie2()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>T<sub>2</sub> in Kelvin</h4>
+                    <input type="number" class="userInput" name="t2" id="temp-energie-2-t2" onchange="getTempEnergie2()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>T<sub>1</sub> in Kelvin</h4>
+                    <input type="number" class="userInput" name="t1" id="temp-energie-2-t1" onchange="getTempEnergie2()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;</p></div>
+                <div><p>&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h2 id="temp-energie-2-q">Q<sub>12</sub></h2>
+                </div>
+            </div>
+            <div class="error-text" id="error-2">
+                <img src="../pictures/error.svg" height="40">
+                <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
+            </div>
+        </div>
+
+        <!-- Potentielle Energie -->
+        <div class="calContainer">
+            <div style="display: flex; flex-direction: row; align-items: center;" >
+                <h2 style="margin: 0px;">Potentielle Energie</h2>
+            </div>
+
+            <div class="calculation">
+                <div>
+                    <h4>m in kg</h4>
+                    <input class="userInput" type="number" name="m" id="pot-energie-m" onchange="getPot()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>a in 
+                        <math>
+                            <mrow>
+                                <mfrac><mi>m</mi><mi>s<sup>2</sup></mi></mfrac>
+                            </mrow>
+                        </math>
+                    </h4>
+                    <input class="userInput" type="number" name="a" id="pot-energie-a" value="9.81" onchange="getPot()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>h in m</h4>
+                    <input class="userInput" type="number" name="h" id="pot-energie-h" onchange="getPot()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h2 id="pot-energie-e">E<sub>pot</sub></h2>
+                </div>
+            </div>
+            <div class="error-text" id="error-3">
+                <img src="../pictures/error.svg" height="40">
+                <p>Masse darf nicht negativ sein!</p>
+            </div>
+        </div>
+
+        <!-- Kinetische Energie -->
+        <div class="calContainer">
+            <div style="display: flex; flex-direction: row; align-items: center;" >
+                <h2 style="margin: 0px;">Kinetische Energie</h2>
+            </div>
+
+            <div class="calculation">
+                <div><p>&nbsp;&nbsp;&nbsp;0.5&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>m in kg</h4>
+                    <input class="userInput" type="number" name="m" id="kin-energie-m" onchange="getKin()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>v in 
+                        <math>
+                            <mrow>
+                                <mfrac><mi>m</mi><mi>s</mi></mfrac>
+                            </mrow>
+                        </math>
+                    </h4>
+                    <input type="number" name="v" id="kin-energie-v" onchange="getKin()" class="userInput">
+                    <sup>2</sup>
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h2 id="kin-energie-e">E<sub>kin</sub></h2>
+                </div>
+            </div>
+            <div class="error-text" id="error-4">
+                <img src="../pictures/error.svg" height="40">
+                <p>Masse kann nicht negativ sein!</p>
+            </div>
+        </div>
+
+        <!-- Mechanische Arbeit bei isobarem Prozess-->
+        <div class="calContainer">
+            <div style="display: flex; flex-direction: row; align-items: center;" >
+                <h2 style="margin: 0px;">Mechanische Arbeit</h2>
+                <h2 style="margin: 0px; width: 20px"></h2>
+                <h3 style="margin: 0px;">bei isobarem Prozess</h3>
+            </div>
+
+            <div class="calculation">
+                <div><p>-</p></div>
+                <div>
+                    <h4>p in Pascal</h4>
+                    <input type="number" name="p" id="w-isobar-p" class="userInput" onchange="wIsobar()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div><p>&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>V<sub>2</sub> in m<sup>2</sup></h4>
+                    <input type="number" name="v2" id="w-isobar-v2" class="userInput" onchange="wIsobar()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>V<sub>1</sub> in m<sup>2</sup></h4>
+                    <input type="number" name="v1" id="w-isobar-v1" class="userInput" onchange="wIsobar()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h2 id="w-isobar-e">W<sub>12</sub></h2>
+                </div>
+            </div>
+            <div class="error-text" id="error-5">
+                <img src="../pictures/error.svg" height="40">
+                <p>Masse kann nicht negativ sein!</p>
+            </div>
+        </div>
+
+        <!-- Mechanische Arbeit im isothermen Prozess -->
+        <div class="calContainer">
+            <div style="display: flex; flex-direction: row; align-items: center;" >
+                <h2 style="margin: 0px;">Mechanische Arbeit</h2>
+                <h2 style="margin: 0px; width: 20px"></h2>
+                <h3 style="margin: 0px;">bei isothermen Prozess</h3>
+            </div>
+
+            <div class="calculation">
+                <div><p>-</p></div>
+                <div>
+                    <h4>m in kg</h4>
+                    <input type="number" name="m" id="w-isotherm-m" class="userInput" onchange="wIsotherm()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>R<sub>i</sub> in 
+                        <math>
+                            <mrow>
+                                <mfrac><mi>J</mi><mi>kg*K</mi></mfrac>
+                            </mrow>
+                        </math>
+                    </h4>
+                    <input list="Elements" id="w-isotherm-ri" type="text" class="userInput" onchange="wIsotherm()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <h4>T in Kelvin</h4>
+                    <input type="number" name="T" id="w-isotherm-t" class="userInput" onchange="wIsotherm()">
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;*In(&nbsp;&nbsp;&nbsp;</p></div>
+                <div>
+                    <div>
+                        <h4>V<sub>2</sub> in m<sup>3</sup></h4>
+                        <input type="number" name="v2" id="w-isotherm-v2" class="userInput" onchange="wIsotherm()">
+                    </div>
+                    <div><hr></div>
+                    <div>
+                        <h4>V<sub>1</sub> in m<sup>3</sup></h4>
+                        <input type="number" name="v1" id="w-isotherm-v1" class="userInput" onchange="wIsotherm()">
+                    </div>
+                </div>
+                <div><p>&nbsp;&nbsp;&nbsp;)&nbsp;=</p></div>
+                <div>
+                    <h2 id="w-isotherm-e">W<sub>12</sub></h2>
+                </div>
+            </div>
+            <div class="error-text" id="error-6">
+                <img src="../pictures/error.svg" height="40">
+                <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
+            </div>
         </div>
     </section>
-    
+    <datalist id="Elements">
+        <option value="Argon"></option>
+        <option value="Helium"></option>
+        <option value="Wasserstoff"></option>
+        <option value="Sauerstoff"></option>
+        <option value="Stickstoff"></option>
+        <option value="Luft"></option>
+        <option value="Kohlenmonoxid"></option>
+        <option value="Kohlendioxid"></option>
+        <option value="Methan"></option>
+    </datalist>
 </body>
 
-<script src="script.js" alt="error"></script>
+<script src="../scripts/script.js" alt="error"></script>
+<script src="../scripts/energy.js"></script>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="../styles/style.css" type="text/css">
     <title>ThermoRechner🔥🍕</title>
 </head>
 <body>
@@ -20,17 +20,58 @@
     </nav>
     <section style="background-color: black;">
         <div id="contentTitleContainer"> 
-            <h1 style="margin: 25px 0px 25px 0px;">Einheiten</h1>
+            <h1 style="margin: 25px 0px 25px 0px;">Einheiten - Umrechner</h1>
+        </div>
+        <div class="calContainer">
+            <h2>Wie funktioniert der Umrechner?</h2>
+            <p style="margin-top: 0px;">Sie suchen sich die Kategorie raus, zudem Ihre Einheit passt!
+                Dabei geben Sie an welche Einheit Sie haben und in welche Sie umrechnen wollen.
+                Zusätzlich müssen Sie noch einen Wert eingeben, um die Zahl umzurechnen.
+            </p>
         </div>
         <div class="calContainer"> 
-            <h2 style="margin: 0px;">Einheiten-Umrechner</h2>
-            <div class="calculation">
-                
+            <h2 style="margin: 0px;">Energie</h2>
+            <div class="calculationE">
+                <div>
+                    <div>
+                        <h4>Gegebene Einheit</h4>
+                        <input list="energy" type="text" id="energy-start" class="largeInput" onchange="energieUmrechnen()">
+                    </div>
+                    <div>
+                        <h4>Gegebene Zahl</h4>
+                        <input type="number" id="energy-number" class="largeInput" onchange="energieUmrechnen()">
+                    </div>
+                </div>
+                <div><h1>==></h1></div>
+                <div>
+                    <div>
+                        <h4>Ziel Einheit</h4>
+                        <input list="energy" id="energy-target" type="text" class="largeInput" onchange="energieUmrechnen()">
+                    </div>
+                    <div>
+                        <h2 id="energy-value">Wert</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="error-text" id="einheiten-00">
+                <img src="../pictures/error.svg" height="40">
+                <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
             </div>
         </div>
     </section>
     
+    <datalist id="energy">
+        <option value="kcal"></option>
+        <option value="J"></option>
+        <option value="Ws"></option>
+        <option value="Wh"></option>
+        <option value="kWh"></option>
+        <option value="VAs"></option>
+        <option value="Nm"></option>
+    </datalist>
 </body>
 
-<script src="script.js" alt="error"></script>
+<script src="../scripts/script.js" alt="error"></script>
+<script src="../scripts/einheiten.js" alt="error"></script>
+<script src="../scripts/energy.js"></script>
 </html>
