@@ -227,5 +227,11 @@ function setThermoValue(name, id) {
 
 //result formatter
 function format(value) {
-   return Math.floor(value * 1000)/1000;
+    if ((Math.floor(value * 1000)/1000) == 0) {
+        return Math.floor(value * 1000000)/1000000;
+    }
+    else if((Math.floor(value * 1000000)/1000000) == 0){
+        return Math.floor(value * 1000000000)/1000000000;
+    }
+    return Math.floor(value * 1000)/1000;
 }

@@ -29,6 +29,8 @@
                 Zusätzlich müssen Sie noch einen Wert eingeben, um die Zahl umzurechnen.
             </p>
         </div>
+
+        <!-- Energie Umrechner -->
         <div class="calContainer"> 
             <h2 style="margin: 0px;">Energie</h2>
             <div class="calculationE">
@@ -58,6 +60,68 @@
                 <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
             </div>
         </div>
+
+        <!-- Mass Umrechner -->
+        <div class="calContainer"> 
+            <h2 style="margin: 0px;">Maß</h2>
+            <div class="calculationE">
+                <div>
+                    <div>
+                        <h4>Gegebene Einheit</h4>
+                        <input list="measure" type="text" id="measure-start" class="largeInput" onchange="massUmrechnen()">
+                    </div>
+                    <div>
+                        <h4>Gegebene Zahl</h4>
+                        <input type="number" id="measure-number" class="largeInput" onchange="massUmrechnen()">
+                    </div>
+                </div>
+                <div><h1>==></h1></div>
+                <div>
+                    <div>
+                        <h4>Ziel Einheit</h4>
+                        <input list="measure" id="measure-target" type="text" class="largeInput" onchange="massUmrechnen()">
+                    </div>
+                    <div>
+                        <h2 id="measure-value">Wert</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="error-text" id="einheiten-01">
+                <img src="../pictures/error.svg" height="40">
+                <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
+            </div>
+        </div>
+
+        <!-- Masse Umrechnen -->
+        <div class="calContainer"> 
+            <h2 style="margin: 0px;">Masse</h2>
+            <div class="calculationE">
+                <div>
+                    <div>
+                        <h4>Gegebene Einheit</h4>
+                        <input list="mass" type="text" id="mass-start" class="largeInput" onchange="gewichtUmrechnen()">
+                    </div>
+                    <div>
+                        <h4>Gegebene Zahl</h4>
+                        <input type="number" id="mass-number" class="largeInput" onchange="gewichtUmrechnen()">
+                    </div>
+                </div>
+                <div><h1>==></h1></div>
+                <div>
+                    <div>
+                        <h4>Ziel Einheit</h4>
+                        <input list="mass" id="mass-target" type="text" class="largeInput" onchange="gewichtUmrechnen()">
+                    </div>
+                    <div>
+                        <h2 id="mass-value">Wert</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="error-text" id="einheiten-02">
+                <img src="../pictures/error.svg" height="40">
+                <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
+            </div>
+        </div>
     </section>
     
     <datalist id="energy">
@@ -68,6 +132,24 @@
         <option value="kWh"></option>
         <option value="VAs"></option>
         <option value="Nm"></option>
+    </datalist>
+
+    <datalist id="measure">
+        <option value="Fuß"></option>
+        <option value="Zoll"></option>
+        <option value="Meilen"></option>
+        <option value="Kilometer"></option>
+        <option value="Meter"></option>
+        <option value="Zentimeter"></option>
+        <option value="Millimeter"></option>
+    </datalist>
+
+    <datalist id="mass">
+        <option value="Pfund"></option>
+        <option value="Unze"></option>
+        <option value="Tonne"></option>
+        <option value="Kilogramm"></option>
+        <option value="gramm"></option>
     </datalist>
 </body>
 
