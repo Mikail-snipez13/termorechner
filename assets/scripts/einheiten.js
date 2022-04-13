@@ -18,12 +18,19 @@ const Measure = [
     "Millimeter"
 ]
 
-const shortMeasure = {
-    feet: "ft",
-    zoll: "in",
-    mile: "mi"
-    
-}
+const Mass = [
+    "Pfund",
+    "Unze",
+    "Tonne",
+    "Kilogramm",
+    "Gramm"
+]
+
+const Temp = [
+    "Kelvin",
+    "Celsius",
+    "Fahrenheit"
+]
 
 // für die Umrechnung von Energiewerten
 function energieUmrechnen() {
@@ -389,5 +396,202 @@ function gewichtUmrechnen() {
     var start = document.getElementById('mass-start').value;
     var target = document.getElementById('mass-target').value;
     var number = document.getElementById('mass-number').value;
+    var element = document.getElementById('mass-value');
 
+    if (Mass.includes(start) && Mass.includes(target) && number != "") {
+        hideError('einheiten-02');
+
+        switch (start) {
+            case "Pfund":
+                if (target == "Unze") {
+                    element.innerHTML = format(number * 16) + massFormat(target);
+                } 
+                else if (target == "Tonne") {
+                    element.innerHTML = format(number/2205) + massFormat(target);
+                }
+                else if (target == "Kilogramm") {
+                    element.innerHTML = format(number/2.205) + massFormat(target);
+                }
+                else if (target == "Gramm") {
+                    element.innerHTML = format(number*454) + massFormat(target);
+                }
+                else {
+                    showError('einheiten-02');
+                }
+            break;
+
+            case "Unze":
+                if (target == "Pfund") {
+                    element.innerHTML = format(number/16) + massFormat(target);
+                } 
+                else if (target == "Tonne") {
+                    element.innerHTML = format(number/35274) + massFormat(target);
+                }
+                else if (target == "Kilogramm") {
+                    element.innerHTML = format(number/35.274) + massFormat(target);
+                }
+                else if (target == "Gramm") {
+                    element.innerHTML = format(number*28.35) + massFormat(target);
+                }
+                else {
+                    showError('einheiten-02');
+                }
+            break;
+
+            case "Tonne":
+                if (target == "Pfund") {
+                    element.innerHTML = format(number*2205) + massFormat(target);
+                } 
+                else if (target == "Unze") {
+                    element.innerHTML = format(number*35274) + massFormat(target);
+                }
+                else if (target == "Kilogramm") {
+                    element.innerHTML = format(number*1000) + massFormat(target);
+                }
+                else if (target == "Gramm") {
+                    element.innerHTML = format(number*1000000) + massFormat(target);
+                }
+                else {
+                    showError('einheiten-02');
+                }
+            break;
+
+            case "Kilogramm":
+                if (target == "Pfund") {
+                    element.innerHTML = format(number*2.205) + massFormat(target);
+                } 
+                else if (target == "Unze") {
+                    element.innerHTML = format(number*35.274) + massFormat(target);
+                }
+                else if (target == "Tonne") {
+                    element.innerHTML = format(number/1000) + massFormat(target);
+                }
+                else if (target == "Gramm") {
+                    element.innerHTML = format(number*1000) + massFormat(target);
+                }
+                else {
+                    showError('einheiten-02');
+                }
+            break;
+
+            case "Gramm":
+                if (target == "Pfund") {
+                    element.innerHTML = format(number/454) + massFormat(target);
+                } 
+                else if (target == "Unze") {
+                    element.innerHTML = format(number/28.35) + massFormat(target);
+                }
+                else if (target == "Tonne") {
+                    element.innerHTML = format(number/1000000) + massFormat(target);
+                }
+                else if (target == "Kilogramm") {
+                    element.innerHTML = format(number/1000) + massFormat(target);
+                }
+                else {
+                    showError('einheiten-02');
+                }
+            break;
+        }
+    }
+    else if (start == "" || target == "" || number == "") {
+        // nothing
+    }
+    else {
+        showError('einheiten-02');
+    }
+}
+
+function massFormat(mass) {
+    switch (mass) {
+        case "Pfund":
+            return "lb";
+        break;
+
+        case "Unze":
+            return "oz";
+        break;
+
+        case "Tonne":
+            return "t";
+        break;
+
+        case "Kilogramm":
+            return "kg";
+        break;
+
+        case "Gramm": 
+            return "g";
+        break;
+    }
+}
+
+function tempUmrechnen() {
+    var start = document.getElementById('temp-start').value;
+    var target = document.getElementById('temp-target').value;
+    var number = document.getElementById('temp-number').value;
+    var element = document.getElementById('temp-value');
+    
+    if (Temp.includes(start) && Temp.includes(target) && number != "") {
+        hideError('einheiten-03');
+
+        switch (start) {
+            case "Kelvin":
+                if (target == "Celsius") {
+                    element.innerHTML = format(number - 273) + tempFormat(target);
+                }
+                else if (target == "Fahrenheit") {
+                    element.innerHTML = format((number - 273)*(9/5)+32) + tempFormat(target);
+                }
+                else {
+                    showError('einheiten-03');
+                }
+            break;
+
+            case "Celsius":
+                if (target == "Kelvin") {
+                    element.innerHTML = format(Number.parseInt(number) + 273) + tempFormat(target);
+                }
+                else if (target == "Fahrenheit") {
+                    element.innerHTML = format(number*(9/5)+32) + tempFormat(target);
+                }
+                else {
+                    showError('einheiten-03');
+                }
+            break;
+
+            case "Fahrenheit":
+                if (target == "Kelvin") {
+                    element.innerHTML = format((number - 32) * (5/9) + 273) + tempFormat(target);
+                }
+                else if (target == "Celsius") {
+                    element.innerHTML = format((number - 32) * (5/9)) + tempFormat(target);
+                }
+                else {
+                    showError('einheiten-03');
+                }
+            break;
+        }
+    }
+    else if (start == "" || target == "" || number == "") {
+        // nothing
+    }
+    else {
+        showError('einheiten-03');
+    }
+}
+
+function tempFormat(temp) {
+    switch (temp) {
+        case "Kelvin":
+            return "K";
+        break;
+
+        case "Celsius":
+            return "°C";
+        break;
+
+        case "Fahrenheit":
+            return "°F";
+        break;
+    }
 }

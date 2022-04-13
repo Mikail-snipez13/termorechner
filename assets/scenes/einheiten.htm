@@ -122,6 +122,37 @@
                 <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
             </div>
         </div>
+
+        <!-- Temperatur Umrechner -->
+        <div class="calContainer"> 
+            <h2 style="margin: 0px;">Temperatur</h2>
+            <div class="calculationE">
+                <div>
+                    <div>
+                        <h4>Gegebene Einheit</h4>
+                        <input list="temp" type="text" id="temp-start" class="largeInput" onchange="tempUmrechnen()">
+                    </div>
+                    <div>
+                        <h4>Gegebene Zahl</h4>
+                        <input type="number" id="temp-number" class="largeInput" onchange="tempUmrechnen()">
+                    </div>
+                </div>
+                <div><h1>==></h1></div>
+                <div>
+                    <div>
+                        <h4>Ziel Einheit</h4>
+                        <input list="temp" id="temp-target" type="text" class="largeInput" onchange="tempUmrechnen()">
+                    </div>
+                    <div>
+                        <h2 id="temp-value">Wert</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="error-text" id="einheiten-03">
+                <img src="../pictures/error.svg" height="40">
+                <p>Falsche oder fehlende Angaben, bitte überprüfen!</p>
+            </div>
+        </div>
     </section>
     
     <datalist id="energy">
@@ -149,7 +180,13 @@
         <option value="Unze"></option>
         <option value="Tonne"></option>
         <option value="Kilogramm"></option>
-        <option value="gramm"></option>
+        <option value="Gramm"></option>
+    </datalist>
+
+    <datalist id="temp">
+        <option value="Kelvin"></option>
+        <option value="Celsius"></option>
+        <option value="Fahrenheit"></option>
     </datalist>
 </body>
 
